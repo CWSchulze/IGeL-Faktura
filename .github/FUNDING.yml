@@ -1,0 +1,3 @@
+# GitHub zeigt hierdurch einen "Sponsor"-Button am Repository.
+# PayPal hat keinen eigenen Schluessel -> ueber "custom" als URL einbinden.
+custom: ["https://www.paypal.me/ChristianSchulze216"]
