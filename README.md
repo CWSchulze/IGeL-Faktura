@@ -13,6 +13,8 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 | ![Leistungen](docs/leistungen.png) | ![Einstellungen](docs/einstellungen.png) |
 | **GOÄ-Katalog** | **Konto-Abgleich** |
 | ![GOÄ-Katalog](docs/goae.png) | ![Konto-Abgleich](docs/konto.png) |
+| **Arbeitsplätze (Freigabe)** | |
+| ![Arbeitsplätze](docs/arbeitsplaetze.png) | |
 
 ## Funktionen
 
