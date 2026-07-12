@@ -23,9 +23,10 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 - **Zahlungserinnerungen** für überfällige Rechnungen (mit optionaler GDT-Datei für T2med).
 - **Leistungsmenü** mit Kategorien, Drag-&-Drop-Sortierung und CSV-Import.
 - **GOÄ-Katalog** – das amtliche Gebührenverzeichnis durchsuchen und Positionen mit einstellbarem Steigerungsfaktor als eigene Leistungen übernehmen.
-- **Konto-Abgleich** – Kontoumsatz-CSV einlesen, Zahlungseingänge automatisch offenen Rechnungen zuordnen und sammelweise als bezahlt buchen.
+- **Konto-Abgleich** – Kontoumsatz-CSV einlesen (deutsche **oder englische** Spaltenüberschriften), Zahlungseingänge automatisch zuordnen und sammelweise als bezahlt buchen. Farb-Ampel (🟢 über die Rechnungsnummer erkannt / 🟠 nur vermutet); eine Sammelüberweisung kann mehrere Rechnungen auf einmal begleichen.
 - **Verfahrensdokumentation (GoBD)** direkt im Programm – druck-/PDF-fähig, mit Praxisdaten vorausgefüllt (für Steuerberater / Betriebsprüfung).
-- **Ein- oder Mehrplatz**: Einzelplatz (alles auf einem PC) oder Client/Server (ein zentraler Server, mehrere Arbeitsplätze).
+- **Ein- oder Mehrplatz** mit klaren Rollen: **Einzelplatz**, **Server** oder **Arbeitsplatz** – direkt im Programm wählbar. Neue Arbeitsplätze werden am Server per Klick **freigegeben** (kein Schlüssel zum Abtippen).
+- **Automatisches Update** der Arbeitsplätze vom Server (die lokalen Daten bleiben erhalten).
 - **Automatische Datensicherung** (Tages-/Wochensicherungen) und eine Wartungsseite mit Integritätsprüfung.
 
 ## Download & Installation

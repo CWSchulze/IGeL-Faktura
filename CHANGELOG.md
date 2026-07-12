@@ -2,6 +2,24 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.4.0 – 2026-07-12
+
+### Konto-Abgleich
+- **Englische Spaltenüberschriften** werden erkannt (Date / Value / Amount / Purpose …) – der Bank-Export läuft ohne Umbenennen; bei 0 Treffern nennt eine klare Meldung die gefundenen Spalten.
+- **Farb-Ampel** je Zahlung: 🟢 über die Rechnungsnummer erkannt, 🟠 nur über Name + Betrag vermutet.
+- **Sammelüberweisungen:** stehen mehrere Rechnungsnummern im Verwendungszweck und die Summe passt, werden alle betroffenen Rechnungen zugeordnet und vorgehakt (z. B. wenn eine Mutter die Rechnungen mehrerer Kinder zusammen überweist).
+
+### Client/Server – Rollen & Bedienung
+- **Explizite Betriebsart** (Einzelplatz / Server / Arbeitsplatz), direkt im Programm über die native Menüleiste **„Dieser Arbeitsplatz"** wählbar – nicht mehr implizit über die Server-Adresse. Zurück auf Einzelplatz jederzeit möglich.
+- **Arbeitsplatz-Freigabe statt Schlüssel:** neue Arbeitsplätze werden am Server unter **„Arbeitsplätze"** freigegeben (einzeln oder zeitweise automatisch „zulassen"); jeder Arbeitsplatz merkt sich ein eigenes Geräte-Token. Kein Schlüssel mehr zum Abtippen.
+- **Native Menüleiste** am Fenster: die lokalen Einstellungen dieses PCs sind **immer** erreichbar – auch ohne Serververbindung. Das Client-Fenster zeigt klar „Arbeitsplatz · Server …".
+- **Automatisches Update:** ist der Server neuer, aktualisiert sich ein Arbeitsplatz beim Start auf Wunsch selbst vom Server – die lokalen Daten und Einstellungen bleiben erhalten.
+- Einstellungen und angezeigte Funktionen richten sich jetzt nach der Rolle: ein reiner **Server** zeigt keine Arbeitsplatz-Einstellungen (GDT/Drucker/Mahnungs-GDT) mehr, ein **Arbeitsplatz** verstellt nicht mehr versehentlich die Server-Konfiguration.
+
+### Behoben
+- Server-Start bricht nicht mehr an einem Sonderzeichen ab, wenn die Ausgabe umgeleitet ist (kein Fenster/Konsole).
+- **`--help`** erscheint jetzt als Fenster (die fensterlose App hat keine Konsole).
+
 ## v1.3.0 – 2026-07-10
 
 ### Neu
