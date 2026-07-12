@@ -2,6 +2,15 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.4.1 – 2026-07-12
+
+### Behoben
+- **Konto-Abgleich – Rechnungsnummern:** werden jetzt **formatunabhängig** im Verwendungszweck erkannt – nicht nur `2026/001`, sondern auch zusammenhängende Nummern wie `M4006260049` oder `K400520260096`. Damit greift die 🟢-Ampel (Nummer erkannt) auch bei diesen Formaten statt immer nur „vermutet".
+- **„Arbeitsplatz noch nicht freigegeben":** Der Arbeitsplatz zeigt jetzt klar **„bitte am Server unter ‚Arbeitsplätze' freigeben"** und verbindet automatisch, sobald er freigegeben ist – statt der irreführenden Meldung „Server nicht erreichbar".
+- **Doppelstart verhindert:** „IGeL-Faktura läuft bereits" (je Betriebsart) – keine mehrfachen Server-Instanzen/Tray-Icons mehr; Server und Arbeitsplatz auf einem PC (zum Testen) bleiben möglich.
+- **Arbeitsplätze-Liste zeigt den Stationsnamen** (Sprechzimmer, Anmeldung …) statt nur des Geräte-Tokens – so ist erkennbar, welcher Arbeitsplatz sich anmeldet. Freigaben bleiben nach einem Server-Neustart erhalten.
+- Beim Start wird **zuerst das automatische Update** angeboten (der zusätzliche „gleiche Version empfohlen"-Hinweis entfällt); die Version des Arbeitsplatzes ist im Fenster/Menü sichtbar. Der alte Server-Schlüssel entfällt vollständig (durch die Freigabe ersetzt).
+
 ## v1.4.0 – 2026-07-12
 
 ### Konto-Abgleich
