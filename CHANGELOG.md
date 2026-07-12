@@ -2,6 +2,24 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.4.2 – 2026-07-12
+
+### Behoben
+- **Automatisches Update lief immer in „Update fehlgeschlagen":** Der Server stellte das
+  Update-Paket erst beim Abruf zusammen (bei der Programmgröße dauert das), während der
+  Arbeitsplatz schon nach kurzer Zeit abbrach – sowohl über VPN als auch direkt am Server.
+  Jetzt bereitet der **Server das Paket bereits beim Start vor** (zwischengespeichert), und der
+  Arbeitsplatz **lädt es geduldig mit Fortschrittsanzeige** herunter, statt vorzeitig aufzugeben.
+- **Klarere Meldung, wenn ein Update doch scheitert:** statt „bitte später erneut versuchen" nennt
+  der Arbeitsplatz jetzt den **konkreten Grund** (Server nicht erreichbar / Arbeitsplatz noch
+  nicht freigegeben / Zeitüberschreitung / zu wenig Speicherplatz) und den Pfad zum Protokoll.
+
+### Sicherheit
+- **Update-Paket enthält garantiert keine Patientendaten:** Das an die Arbeitsplätze
+  ausgelieferte Programm-Paket schließt jede Datenbank und alle lokalen Einstellungen zuverlässig
+  aus – auch dann, wenn die Datenbank per Einstellung an einen anderen Ort gelegt oder ein
+  Sicherungsordner versehentlich im Programmordner angelegt wurde.
+
 ## v1.4.1 – 2026-07-12
 
 ### Behoben
