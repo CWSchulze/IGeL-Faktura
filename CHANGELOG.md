@@ -2,6 +2,17 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.4.3 – 2026-07-13
+
+### Diagnose & Stabilität
+- **Verständliche Fehlerseite statt „Internal Server Error":** Tritt ein unerwarteter Fehler
+  auf, zeigt das Programm jetzt eine klare Diagnose-Seite mit dem **konkreten Fehler** und dem
+  **Speicherort des Protokolls** – so lässt sich ein Problem (z. B. auf einem neu eingerichteten
+  Rechner) sofort einordnen und melden, statt vor einer leeren Meldung zu stehen. Die Daten
+  bleiben dabei unberührt.
+- **Umgebungs-Protokoll beim Start:** Version, Betriebsart, alle Datenpfade und Schreibrechte
+  werden beim Start ins Protokoll geschrieben – das erleichtert die Ferndiagnose erheblich.
+
 ## v1.4.2 – 2026-07-12
 
 ### Behoben

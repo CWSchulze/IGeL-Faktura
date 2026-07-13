@@ -1925,7 +1925,7 @@
       "version": "2024.8.26"
     },
     {
-      "bom-ref": "pillow==12.2.0",
+      "bom-ref": "pillow==12.3.0",
       "description": "Python Imaging Library (fork)",
       "externalReferences": [
         {
@@ -1973,9 +1973,9 @@
         }
       ],
       "name": "pillow",
-      "purl": "pkg:pypi/pillow@12.2.0",
+      "purl": "pkg:pypi/pillow@12.3.0",
       "type": "library",
-      "version": "12.2.0"
+      "version": "12.3.0"
     },
     {
       "bom-ref": "pip==26.1.2",
@@ -4267,9 +4267,10 @@
         "defusedxml==0.7.1",
         "packaging==26.2",
         "pytest-cov==7.1.0",
-        "pytest==9.1.1"
+        "pytest==9.1.1",
+        "setuptools==82.0.1"
       ],
-      "ref": "pillow==12.2.0"
+      "ref": "pillow==12.3.0"
     },
     {
       "dependsOn": [
@@ -4331,7 +4332,7 @@
         "cryptography==49.0.0",
         "fonttools==4.63.0",
         "lxml==6.1.1",
-        "pillow==12.2.0",
+        "pillow==12.3.0",
         "pyhanko-certvalidator==0.31.1",
         "qrcode==8.2",
         "requests==2.34.2",
@@ -4344,7 +4345,7 @@
     },
     {
       "dependsOn": [
-        "pillow==12.2.0",
+        "pillow==12.3.0",
         "pytest==9.1.1"
       ],
       "ref": "pydyf==0.12.1"
@@ -4387,7 +4388,7 @@
       "dependsOn": [
         "cryptography==49.0.0",
         "fonttools==4.63.0",
-        "pillow==12.2.0",
+        "pillow==12.3.0",
         "pytest-cov==7.1.0",
         "typing_extensions==4.15.0"
       ],
@@ -4460,7 +4461,7 @@
     {
       "dependsOn": [
         "colorama==0.4.6",
-        "pillow==12.2.0"
+        "pillow==12.3.0"
       ],
       "ref": "qrcode==8.2"
     },
@@ -4475,7 +4476,7 @@
     {
       "dependsOn": [
         "charset-normalizer==3.4.7",
-        "pillow==12.2.0"
+        "pillow==12.3.0"
       ],
       "ref": "reportlab==4.5.1"
     },
@@ -4540,7 +4541,7 @@
       "dependsOn": [
         "cssselect2==0.9.0",
         "lxml==6.1.1",
-        "pillow==12.2.0",
+        "pillow==12.3.0",
         "reportlab==4.5.1",
         "tinycss2==1.5.1"
       ],
@@ -4611,7 +4612,7 @@
         "cffi==2.0.0",
         "cssselect2==0.9.0",
         "fonttools==4.63.0",
-        "pillow==12.2.0",
+        "pillow==12.3.0",
         "pydyf==0.12.1",
         "pyphen==0.17.2",
         "pytest==9.1.1",
@@ -4631,7 +4632,7 @@
         "arabic-reshaper==3.0.1",
         "coverage==7.14.2",
         "html5lib==1.1",
-        "pillow==12.2.0",
+        "pillow==12.3.0",
         "pyHanko==0.35.1",
         "pyhanko-certvalidator==0.31.1",
         "pypdf==6.13.3",
@@ -4650,7 +4651,7 @@
     }
   ],
   "metadata": {
-    "timestamp": "2026-07-12T15:34:06.424613+00:00",
+    "timestamp": "2026-07-13T12:14:05.947923+00:00",
     "tools": {
       "components": [
         {
@@ -4754,7 +4755,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:ed4a3a51-e64f-4ae1-aa89-ba244d7a7adc",
+  "serialNumber": "urn:uuid:46d67023-4f02-4c1f-98bb-4186990eae52",
   "version": 1,
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
