@@ -2335,6 +2335,29 @@
       "version": "0.12.1"
     },
     {
+      "bom-ref": "pyflakes==3.4.0",
+      "description": "passive checker of Python programs",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata: Home-page",
+          "type": "website",
+          "url": "https://github.com/PyCQA/pyflakes"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "acknowledgement": "declared",
+            "id": "MIT"
+          }
+        }
+      ],
+      "name": "pyflakes",
+      "purl": "pkg:pypi/pyflakes@3.4.0",
+      "type": "library",
+      "version": "3.4.0"
+    },
+    {
       "bom-ref": "pyhanko-certvalidator==0.31.1",
       "description": "Validates X.509 certificates and paths; forked from wbond/certvalidator",
       "externalReferences": [
@@ -4351,6 +4374,9 @@
       "ref": "pydyf==0.12.1"
     },
     {
+      "ref": "pyflakes==3.4.0"
+    },
+    {
       "dependsOn": [
         "asn1crypto==1.5.1",
         "cryptography==49.0.0",
@@ -4651,7 +4677,7 @@
     }
   ],
   "metadata": {
-    "timestamp": "2026-07-13T12:14:05.947923+00:00",
+    "timestamp": "2026-07-13T19:14:05.571215+00:00",
     "tools": {
       "components": [
         {
@@ -4755,7 +4781,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:46d67023-4f02-4c1f-98bb-4186990eae52",
+  "serialNumber": "urn:uuid:c8d4e294-87f8-4a7e-9c2d-0292e1d8be9c",
   "version": 1,
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",

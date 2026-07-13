@@ -2,6 +2,20 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.4.4 – 2026-07-13
+
+### Behoben
+- **Automatisches Update funktioniert jetzt wirklich.** In v1.4.0–v1.4.3 brach die Aktualisierung
+  eines Arbeitsplatzes durch einen internen Programmfehler **immer sofort** ab – noch bevor etwas
+  geladen wurde; die Meldung „Update fehlgeschlagen" erschien unabhängig von Netz oder Server.
+  Behoben und mit einem Test abgesichert.
+  - **Wichtig für den Umstieg:** Ein Arbeitsplatz mit v1.4.0–v1.4.3 kann sich **nicht selbst** auf
+    v1.4.4 aktualisieren. Diese eine Version bitte noch **manuell** installieren (Programmordner
+    ersetzen, der Ordner `daten` bleibt erhalten) – **zuerst den Server, dann die Arbeitsplätze**.
+    Ab v1.4.4 läuft das automatische Update.
+- Der Aktualisierungsvorgang schreibt jetzt ein eigenes Protokoll (`daten\logs\igel-update.log`),
+  damit ein Problem beim Ersetzen der Dateien nachvollziehbar ist.
+
 ## v1.4.3 – 2026-07-13
 
 ### Diagnose & Stabilität
