@@ -2,6 +2,44 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.5.0 – 2026-07-14
+
+### Server: Autostart & saubere Trennung von Dienst und Steuerung
+- **Server-Autostart (headless).** Der Server lässt sich jetzt so einrichten, dass er
+  **automatisch beim Windows-Start** läuft – auch **ohne Anmeldung** (echter Server-Betrieb). Das
+  Programm legt dabei selbst eine geplante Aufgabe an – der Windows-Aufgabenplaner muss **nicht
+  mehr von Hand** konfiguriert werden.
+  - **Ein-/ausschalten direkt in der Server-Verwaltung:** Knopf **„Autostart einrichten/entfernen"**
+    im **Einstellungen → Server**-Tab der Weboberfläche (bzw. im Menü des Steuerungs-Tray).
+    Einmalig mit Windows-Admin-Nachfrage. **Nur am Server-PC selbst** möglich – ein Arbeitsplatz
+    kann den Server-Autostart nicht ändern.
+- **Server ist jetzt ein reiner Hintergrund-Dienst; die Steuerung ist ein eigenes Programm.**
+  Bisher hing das Tray-Icon am Server-Prozess – beim Autostart (Systemstart) gab es deshalb gar
+  kein Icon. Jetzt:
+  - Der **Server läuft immer headless** (nur im Hintergrund, kein Fenster/Icon).
+  - Ein **separates, optionales Steuerungs-Tray** („**IGeL-Server steuern**") zeigt den Status
+    (Apfel grün = Server läuft / rot = nicht erreichbar) und bietet: Verwaltung öffnen, Logs,
+    Autostart ein/aus, Server beenden. Es startet **keinen** zweiten Server, sondern steuert den
+    laufenden – funktioniert also auch beim Autostart-Server. Beim manuellen Start in der Rolle
+    „Server" erscheint es automatisch; **läuft der Server bereits, öffnet ein Doppelklick auf das
+    Programm einfach die Steuerung** (statt „läuft bereits").
+  - Die Einrichtung legt zwei Desktop-Verknüpfungen an – **„IGeL-Server verwalten"** (Weboberfläche)
+    und **„IGeL-Server steuern"** (Tray) – und trägt das Steuerungs-Tray zusätzlich in den
+    **Windows-Autostart** ein: Nach der **Anmeldung** erscheint das Icon automatisch, während der
+    Server selbst schon seit dem **Systemstart** läuft. Der **Server-Tab** der Einstellungen zeigt
+    den Autostart-Status.
+
+### Aufräumen & Deinstallation
+- Der Server **räumt den Update-Zwischenspeicher selbst auf**: Beim Start werden gecachte
+  Update-Pakete älterer Versionen (je ~240 MB im Windows-Temp-Ordner) automatisch gelöscht.
+- Die Anleitung enthält jetzt einen **Deinstallations-Abschnitt** (erst „Autostart entfernen",
+  dann Ordner löschen) – inklusive Hinweis auf die **Aufbewahrungspflicht** der Rechnungsdatenbank
+  (GoBD) vor dem Löschen.
+
+### Sicherheit
+- Abhängigkeiten aktualisiert (**Pillow ≥ 12.3.0**, **setuptools ≥ 83.0.0**) zur Behebung
+  gemeldeter Schwachstellen; die mitgelieferte Komponentenliste (SBOM) ist wieder ohne Befund.
+
 ## v1.4.4 – 2026-07-13
 
 ### Behoben

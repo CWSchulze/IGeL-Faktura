@@ -3193,7 +3193,7 @@
       "version": "2026.6.3"
     },
     {
-      "bom-ref": "setuptools==82.0.1",
+      "bom-ref": "setuptools==83.0.0",
       "description": "Most extensible Python build backend with support for C/C++ extension modules",
       "externalReferences": [
         {
@@ -3221,9 +3221,9 @@
         }
       ],
       "name": "setuptools",
-      "purl": "pkg:pypi/setuptools@82.0.1",
+      "purl": "pkg:pypi/setuptools@83.0.0",
       "type": "library",
-      "version": "82.0.1"
+      "version": "83.0.0"
     },
     {
       "bom-ref": "shiboken6==6.11.1",
@@ -4274,7 +4274,7 @@
     {
       "dependsOn": [
         "pytest==9.1.1",
-        "setuptools==82.0.1"
+        "setuptools==83.0.0"
       ],
       "ref": "packageurl-python==0.17.6"
     },
@@ -4291,7 +4291,7 @@
         "packaging==26.2",
         "pytest-cov==7.1.0",
         "pytest==9.1.1",
-        "setuptools==82.0.1"
+        "setuptools==83.0.0"
       ],
       "ref": "pillow==12.3.0"
     },
@@ -4400,7 +4400,7 @@
         "pyinstaller-hooks-contrib==2026.6",
         "pytest==9.1.1",
         "pywin32-ctypes==0.2.3",
-        "setuptools==82.0.1"
+        "setuptools==83.0.0"
       ],
       "ref": "pyinstaller==6.21.0"
     },
@@ -4443,7 +4443,7 @@
         "packaging==26.2",
         "pluggy==1.6.0",
         "requests==2.34.2",
-        "setuptools==82.0.1",
+        "setuptools==83.0.0",
         "tomli==2.4.1"
       ],
       "ref": "pytest==9.1.1"
@@ -4552,7 +4552,7 @@
         "tomli==2.4.1",
         "tomli_w==1.2.0"
       ],
-      "ref": "setuptools==82.0.1"
+      "ref": "setuptools==83.0.0"
     },
     {
       "ref": "shiboken6==6.11.1"
@@ -4677,7 +4677,7 @@
     }
   ],
   "metadata": {
-    "timestamp": "2026-07-13T19:14:05.571215+00:00",
+    "timestamp": "2026-07-14T17:39:01.734085+00:00",
     "tools": {
       "components": [
         {
@@ -4781,7 +4781,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:c8d4e294-87f8-4a7e-9c2d-0292e1d8be9c",
+  "serialNumber": "urn:uuid:32b45da6-f9dc-41f6-ad39-943c7ea14769",
   "version": 1,
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
