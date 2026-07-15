@@ -2,6 +2,19 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.6.1 – 2026-07-15
+
+### Behoben
+- **Server-Suche findet den Server jetzt auch auf PCs mit mehreren Netzwerken zuverlässig.**
+  Auf einem Arbeitsplatz mit gleichzeitig aktivem **VPN, WLAN und LAN** ging die Suchanfrage
+  bisher nur über eine Netzwerkkarte (die des Standard-Wegs) hinaus – lag das Praxisnetz nicht
+  darauf, wurde der Server nicht gefunden. Die Suche fragt jetzt über **alle** Netzwerkkarten
+  des PCs gleichzeitig.
+
+### Hinweis
+- Der **Server-Port** bleibt (nur am Server) einstellbar – als Notausgang, falls 8765 belegt
+  ist. Niemand muss ihn kennen: Arbeitsplätze erhalten ihn automatisch über die Server-Suche.
+
 ## v1.6.0 – 2026-07-15
 
 ### Arbeitsplätze finden den Server automatisch – keine IP-Eingabe mehr
