@@ -2,6 +2,22 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.5.1 – 2026-07-15
+
+### Behoben (Feld-Feedback: Verknüpfung/Tray liefen ins Leere)
+- **Tray und Verknüpfung richten sich jetzt nach dem wirklich laufenden Server** – nicht mehr
+  nach der gespeicherten Einstellung. Der Server hinterlegt beim Start seinen tatsächlichen
+  Port in einer Laufzeitdatei; das Steuerungs-Tray liest sie, und die Desktop-Verknüpfung
+  „IGeL-Server verwalten" wird bei **jedem Serverstart** auf die echte Adresse aufgefrischt
+  (bisher blieb der Port vom Einrichtungszeitpunkt eingebrannt – z. B. 8765 statt 8795).
+  Auch eine Port-Änderung in den Einstellungen zieht die Verknüpfung sofort nach.
+- **Das Eingabefeld „Server-Bindeadresse" ist entfernt** – es lud zu Verwechslungen ein
+  (Server-IP? Subnetz-Maske?) und konnte den Server vom eigenen PC aus unerreichbar machen.
+  Der Server ist jetzt **immer in allen Netzwerken dieses PCs erreichbar** (einschließlich
+  `localhost` am Server-PC selbst); eine früher eingetragene feste IP wird beim Start
+  automatisch ignoriert. Wer den Zugriff auf bestimmte Netze beschränken will, nutzt die
+  Windows-Firewall – die Patientendaten schützt ohnehin die Arbeitsplatz-Freigabe.
+
 ## v1.5.0 – 2026-07-14
 
 ### Server: Autostart & saubere Trennung von Dienst und Steuerung
