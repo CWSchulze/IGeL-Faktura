@@ -2,6 +2,24 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.6.0 – 2026-07-15
+
+### Arbeitsplätze finden den Server automatisch – keine IP-Eingabe mehr
+- **Server-Suche im Praxisnetz:** Im Arbeitsplatz-Dialog gibt es neben der Server-Adresse den
+  Knopf **„Im Netz suchen …"** – er findet laufende IGeL-Server automatisch (Zero-Configuration,
+  wie bei Netzwerkdruckern) und zeigt sie mit **Praxisnamen** an; ein Klick übernimmt die
+  Adresse und stellt die Rolle auf „Arbeitsplatz". IP-Adressen und Ports muss niemand mehr
+  kennen oder abtippen. *(Grenze: über VPN/Router hinweg funktioniert die automatische Suche
+  technisch nicht – dort bleibt die manuelle Adresseingabe.)*
+- **Selbstheilung bei Adress-Wechsel:** Jeder Server trägt eine **stabile Kennung**. Bekommt der
+  Server-PC eine neue IP (z. B. durch den Router/DHCP), findet ein Arbeitsplatz „seinen" Server
+  beim Start automatisch wieder und aktualisiert die gespeicherte Adresse – statt „Server nicht
+  erreichbar" zu melden.
+- Die **Firewall-Freigabe** für die Server-Erkennung wird automatisch zusammen mit der
+  bestehenden Server-Regel angelegt (weiterhin nur **eine** Windows-Admin-Nachfrage).
+- Die Erkennungs-Antwort enthält keine Patientendaten (nur Praxisname, Kennung, Port, Version);
+  der Datenzugriff bleibt durch die Arbeitsplatz-Freigabe geschützt.
+
 ## v1.5.1 – 2026-07-15
 
 ### Behoben (Feld-Feedback: Verknüpfung/Tray liefen ins Leere)
