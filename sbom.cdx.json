@@ -3716,6 +3716,52 @@
       "version": "2.7.0"
     },
     {
+      "bom-ref": "uv==0.11.29",
+      "description": "An extremely fast Python package and project manager, written in Rust.",
+      "externalReferences": [
+        {
+          "comment": "from packaging metadata Project-URL: Documentation",
+          "type": "documentation",
+          "url": "https://docs.astral.sh/uv"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Discord",
+          "type": "other",
+          "url": "https://discord.gg/astral-sh"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Releases",
+          "type": "other",
+          "url": "https://github.com/astral-sh/uv/releases"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Changelog",
+          "type": "release-notes",
+          "url": "https://github.com/astral-sh/uv/blob/main/CHANGELOG.md"
+        },
+        {
+          "comment": "from packaging metadata Project-URL: Repository",
+          "type": "vcs",
+          "url": "https://github.com/astral-sh/uv"
+        },
+        {
+          "comment": "from packaging metadata: Home-page",
+          "type": "website",
+          "url": "https://pypi.org/project/uv/"
+        }
+      ],
+      "licenses": [
+        {
+          "acknowledgement": "declared",
+          "expression": "MIT OR Apache-2.0"
+        }
+      ],
+      "name": "uv",
+      "purl": "pkg:pypi/uv@0.11.29",
+      "type": "library",
+      "version": "0.11.29"
+    },
+    {
       "bom-ref": "waitress==3.0.2",
       "description": "Waitress WSGI server",
       "externalReferences": [
@@ -4620,6 +4666,9 @@
       "ref": "urllib3==2.7.0"
     },
     {
+      "ref": "uv==0.11.29"
+    },
+    {
       "dependsOn": [
         "coverage==7.14.2",
         "pytest-cov==7.1.0",
@@ -4677,7 +4726,7 @@
     }
   ],
   "metadata": {
-    "timestamp": "2026-07-15T13:21:28.726191+00:00",
+    "timestamp": "2026-07-16T00:13:27.790504+00:00",
     "tools": {
       "components": [
         {
@@ -4781,7 +4830,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:9f6d48ba-dd9d-4d7a-9ac0-320beba735c9",
+  "serialNumber": "urn:uuid:5c30cbac-a09e-43a0-b223-fae06c809cb9",
   "version": 1,
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",

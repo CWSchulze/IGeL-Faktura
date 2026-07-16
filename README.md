@@ -33,12 +33,20 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 
 ## Download & Installation
 
-1. Unter **[Releases](../../releases)** die aktuelle `IGeL-Faktura-<version>.zip` herunterladen.
-2. Entpacken – der gesamte Ordner ist portabel – und `IGeL-Faktura.exe` starten.
-3. In den **Einstellungen** Praxisdaten, IBAN/BIC, GDT-Ordner und Drucker eintragen.
-4. **T2med**: den Express-Aufruf auf `…\IGeL-Faktura.exe --express` einrichten.
+IGeL-Faktura läuft auf **Windows und Linux** – Server und Arbeitsplätze dürfen gemischt sein
+(passend zu T2med, das beide Systeme beliebig kombinieren lässt).
 
-Voraussetzung: **Windows 10/11**. Die ausführliche Administrator-Anleitung (`README.txt`) liegt dem ZIP bei.
+1. Unter **[Releases](../../releases)** das Paket für Ihr System herunterladen (Windows bzw.
+   `…-linux`).
+2. Entpacken – der Ordner ist portabel – und starten:
+   - **Windows:** `IGeL-Faktura.exe`
+   - **Linux:** `./IGeL-Faktura`
+3. In den **Einstellungen** Praxisdaten, IBAN/BIC, GDT-Ordner und Drucker eintragen.
+4. **T2med**: den Express-Aufruf auf das Programm mit dem Argument `--express` einrichten
+   (Windows z. B. `…\IGeL-Faktura.exe --express`).
+
+**Unterstützte Systeme:** Windows 11 · Ubuntu 22.04 / 24.04 LTS.
+Die ausführliche Administrator-Anleitung (`README.txt`) liegt jedem Paket bei.
 
 ## Unterstützen
 
@@ -54,6 +62,6 @@ IGeL-Faktura ist kostenlos nutzbar. Wer die Weiterentwicklung **freiwillig** unt
 
 - Alle Änderungen je Version: siehe **[CHANGELOG.md](CHANGELOG.md)**.
 - **Nutzungsbedingungen / Lizenz:** siehe **[LICENSE.md](LICENSE.md)** – kostenlose Nutzung, ohne Gewähr.
-- **Drittanbieter-Lizenzen:** Das Programm bündelt Fremdkomponenten (u. a. SumatraPDF unter GPL, Qt/PySide6 unter LGPL); deren Lizenzen und Quellenangaben liegen dem Download als `THIRD-PARTY-LICENSES.txt` bei.
+- **Drittanbieter-Lizenzen:** Das Programm bündelt Fremdkomponenten (u. a. SumatraPDF unter GPL – nur im Windows-Paket, Qt/PySide6 unter LGPL); deren Lizenzen und Quellenangaben liegen dem Download als `THIRD-PARTY-LICENSES.txt` bei.
 - In diesem Repository liegt **kein Quellcode** – nur die fertige Anwendung (unter *Releases*) und diese Kurzanleitung.
 - Nutzung in eigener Verantwortung, ohne Gewähr. Steuer- und GoBD-Fragen bitte mit dem Steuerberater klären.

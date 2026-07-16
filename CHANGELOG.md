@@ -2,6 +2,28 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.7.0 – 2026-07-16
+
+### IGeL-Faktura läuft jetzt auch unter Linux
+Passend zu T2med – das Server und Arbeitsplätze über **Windows und Linux** hinweg beliebig
+kombinieren lässt – läuft IGeL-Faktura jetzt auch unter Linux. Server und Arbeitsplätze dürfen
+gemischt sein (z. B. ein Linux-Server mit Windows-Arbeitsplätzen).
+
+- **Unterstützte Systeme:** Windows 11 · Ubuntu 22.04 / 24.04 LTS.
+- **Drucken** unter Linux über das Betriebssystem (CUPS/`lp`); unter Windows unverändert
+  (mitgeliefertes SumatraPDF).
+- **Server-Autostart** jetzt auch unter Linux (systemd-Dienst): Der Server startet – wie bisher
+  unter Windows – **ohne Anmeldung** beim Hochfahren und wird über die Weboberfläche verwaltet.
+- **Automatische Server-Suche** im Netz und die Selbstheilung bei IP-Wechsel funktionieren
+  plattformübergreifend.
+- **Auto-Update schützt gemischte Netze:** Ein Arbeitsplatz aktualisiert sich nur von einem Server
+  mit **gleichem Betriebssystem** – ein Windows-Programm wird also nie versehentlich durch ein
+  Linux-Paket ersetzt (und umgekehrt).
+
+### Behoben
+- **Auto-Update unter Linux:** Ein bereits beendeter Aktualisierungs-Prozess wurde als „läuft noch"
+  fehlgedeutet, wodurch der Updater endlos wartete. Wird jetzt korrekt als beendet erkannt.
+
 ## v1.6.1 – 2026-07-15
 
 ### Behoben
