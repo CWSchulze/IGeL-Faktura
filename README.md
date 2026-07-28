@@ -6,22 +6,54 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 
 ## Screenshots
 
-| Rechnungsübersicht | Neue Rechnung |
-|---|---|
-| ![Rechnungsübersicht](docs/uebersicht.png) | ![Neue Rechnung](docs/neue-rechnung.png) |
-| **Leistungen verwalten** | **Einstellungen** |
-| ![Leistungen](docs/leistungen.png) | ![Einstellungen](docs/einstellungen.png) |
-| **GOÄ-Katalog** | **Konto-Abgleich** |
-| ![GOÄ-Katalog](docs/goae.png) | ![Konto-Abgleich](docs/konto.png) |
-| **Arbeitsplätze (Freigabe)** | |
-| ![Arbeitsplätze](docs/arbeitsplaetze.png) | |
+> Tipp: Auf ein Bild klicken öffnet es groß (Zoom).
+
+**Rechnungsübersicht** – alle Rechnungen mit Status, Zeitraum-Filter und CSV-Export
+
+![Rechnungsübersicht](docs/uebersicht.png)
+
+**Neue Rechnung** – Leistungen wählen, Datum je Position, Live-Summe mit MwSt
+
+![Neue Rechnung](docs/neue-rechnung.png)
+
+**Offene Vormerkungen** – laufende Behandlungsserien sammeln und als *eine* Rechnung abrechnen
+
+![Offene Vormerkungen](docs/vormerkungen.png)
+
+<details>
+<summary><b>Weitere Ansichten</b> – Leistungsmenü, Einstellungen, GOÄ-Katalog, Konto-Abgleich, Mehrplatz</summary>
+
+<br>
+
+**Leistungsmenü verwalten**
+
+![Leistungen verwalten](docs/leistungen.png)
+
+**Einstellungen**
+
+![Einstellungen](docs/einstellungen.png)
+
+**GOÄ-Katalog durchsuchen**
+
+![GOÄ-Katalog](docs/goae.png)
+
+**Konto-Abgleich (Zahlungseingänge zuordnen)**
+
+![Konto-Abgleich](docs/konto.png)
+
+**Arbeitsplätze freigeben (Mehrplatz)**
+
+![Arbeitsplätze](docs/arbeitsplaetze.png)
+
+</details>
 
 ## Funktionen
 
 - **T2med / GDT-Anbindung** – der Patient kommt automatisch per GDT; die PDF-Rechnung und die GDT-Rückgabe landen wieder bei T2med.
 - **Privat-/IGeL-Rechnungen als PDF** (DIN-5008-Layout), mit **GiroCode / EPC-QR-Code** zum bequemen Bezahlen.
 - **Gemischte MwSt** (steuerfreie und steuerpflichtige Leistungen) auf einer Rechnung – korrekt nach Steuersätzen aufgeschlüsselt (§14 UStG).
-- **Revisionssicher / GoBD** – gebuchte Rechnungen werden nicht geändert oder gelöscht (Storno statt Korrektur), fortlaufende eindeutige Nummern, lückenloses Protokoll.
+- **Revisionssicher / GoBD** – gebuchte Rechnungen werden nicht geändert oder gelöscht (Storno statt Korrektur), fortlaufende eindeutige Nummern, lückenloses Protokoll. Ein **Storno** ist ausdruckbar (deutlich als ungültig gekennzeichnet) und wird als negativer **Karteieintrag an T2med** zurückgemeldet.
+- **Sammelrechnung für mehrterminige Behandlungen** – Sitzungen einer Impf- oder Plasma-/PRP-Serie am Behandlungstag **vormerken** und am Ende zu **einer** Rechnung mit je Sitzung eigenem **Leistungsdatum** abrechnen. Eine Übersicht „Offene Vormerkungen" sorgt dafür, dass keine Serie vergessen wird.
 - **Zahlungserinnerungen** für überfällige Rechnungen (mit optionaler GDT-Datei für T2med).
 - **Leistungsmenü** mit Kategorien, Drag-&-Drop-Sortierung und CSV-Import.
 - **GOÄ-Katalog** – das amtliche Gebührenverzeichnis durchsuchen und Positionen mit einstellbarem Steigerungsfaktor als eigene Leistungen übernehmen.

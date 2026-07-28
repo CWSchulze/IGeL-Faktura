@@ -2486,7 +2486,7 @@
       "version": "3.3.2"
     },
     {
-      "bom-ref": "pypdf==6.13.3",
+      "bom-ref": "pypdf==6.14.2",
       "description": "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files",
       "externalReferences": [
         {
@@ -2519,9 +2519,9 @@
         }
       ],
       "name": "pypdf",
-      "purl": "pkg:pypi/pypdf@6.13.3",
+      "purl": "pkg:pypi/pypdf@6.14.2",
       "type": "library",
-      "version": "6.13.3"
+      "version": "6.14.2"
     },
     {
       "bom-ref": "pyphen==0.17.2",
@@ -4464,7 +4464,7 @@
         "pytest-cov==7.1.0",
         "typing_extensions==4.15.0"
       ],
-      "ref": "pypdf==6.13.3"
+      "ref": "pypdf==6.14.2"
     },
     {
       "dependsOn": [
@@ -4710,7 +4710,7 @@
         "pillow==12.3.0",
         "pyHanko==0.35.1",
         "pyhanko-certvalidator==0.31.1",
-        "pypdf==6.13.3",
+        "pypdf==6.14.2",
         "python-bidi==0.6.10",
         "reportlab==4.5.1",
         "svglib==2.0.2",
@@ -4726,7 +4726,7 @@
     }
   ],
   "metadata": {
-    "timestamp": "2026-07-16T00:13:27.790504+00:00",
+    "timestamp": "2026-07-28T13:50:02.313558+00:00",
     "tools": {
       "components": [
         {
@@ -4830,7 +4830,7 @@
       ]
     }
   },
-  "serialNumber": "urn:uuid:5c30cbac-a09e-43a0-b223-fae06c809cb9",
+  "serialNumber": "urn:uuid:b3d48e56-e4a0-4ccf-96f8-06c6d54312a8",
   "version": 1,
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",

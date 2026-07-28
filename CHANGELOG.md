@@ -2,6 +2,66 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.8.0 – 2026-07-28
+
+### Sammelrechnung: Behandlungen über mehrere Termine vormerken (Stufe 2)
+- **Laufende Behandlungen parken und später gemeinsam abrechnen.** Im Express kann jede Leistung
+  eines T2med-Patienten **vorgemerkt** werden (Knopf „Vormerken") – z. B. jede Sitzung einer
+  Impf- oder Plasmaserie am Behandlungstag. Preis und Datum werden dabei **eingefroren**.
+- Der Bereich **„Laufende Behandlung"** zeigt die bereits erfassten Sitzungen des Patienten; ein
+  Klick auf **„Jetzt abrechnen"** fasst sie zu **einer** Rechnung mit je Sitzung eigenem Datum
+  zusammen (PDF + Archiv + GDT wie bei jeder Rechnung). Vorgemerkt ≠ gebucht: erst das Abrechnen
+  erzeugt die revisionssichere Rechnung.
+- Neuer Menüpunkt **„Vormerkungen"** (mit Zähler): Übersicht aller Patienten mit offenen Serien –
+  damit nichts vergessen wird – plus ein **Editor**, in dem sich Datum und Preis je Sitzung bis
+  zum Abrechnen korrigieren und einzelne Sitzungen entfernen lassen.
+- Vormerken braucht die **T2med-Patientennummer** (eindeutiger Serien-Schlüssel).
+
+### Leistungsdatum je Position (Sammelrechnung, Stufe 1)
+- **Jede Rechnungsposition kann ein eigenes Leistungsdatum tragen** (Vorgabe = Rechnungsdatum).
+  Damit lassen sich mehrterminige Behandlungen – Impf- oder Plasma-/PRP-Serien – korrekt als
+  **eine** Rechnung mit **je Sitzung datierten** Positionen abbilden.
+- Im Erfassungs- und Express-Formular steht je Leistung ein kleines Datumsfeld; weicht ein Datum
+  vom Rechnungsdatum ab, weist das **PDF** je Position das Leistungsdatum aus (§12/§14-konform),
+  sonst bleibt die gewohnte Kurzform.
+
+### Storno vollständig in T2med rückgemeldet
+- **Storno-Rechnungen sind jetzt druckbar.** Das PDF trägt einen deutlichen Hinweis
+  „STORNIERT – diese Rechnung ist ungültig“, damit ein Ausdruck nie mit einer gültigen Rechnung
+  verwechselt wird.
+- **Storno schreibt eine GDT-Rückmeldung in die Patientenakte** – analog zur Rechnung, nur mit
+  **negativen Eurobeträgen** und dem Vermerk „Storno zu Rechnung &lt;Nr&gt;“. So ist der Vorgang
+  auch in T2med nachvollziehbar (fester Dateiname `Storno.gdt`, ohne PDF-Anhang). Im
+  Client/Server-Betrieb wird die Rückmeldung am **auslösenden Arbeitsplatz** geschrieben – dort,
+  wo dessen T2med liest.
+- Mahnungs- und Storno-GDT teilen sich denselben **dauerüberwachten Rückmelde-Ordner**; T2med muss
+  beide Dateinamen (`Mahnung.gdt`, `Storno.gdt`) in seinem Ordner-Import führen (siehe In-App-Hilfe,
+  Abschnitt „T2med / GDT-Anbindung“).
+
+### Robustheit / GDT
+- **Wahlweise nummeriertes GDT-Dateischema** (Einstellungen → Arbeitsplatz → „GDT-Dateischema"):
+  Neben den festen Dateinamen (Vorgabe) kann IGeL-Faktura die Austauschdateien nun auch mit
+  **hochzählender Endung** (`…001…999`) schreiben **und lesen** – passend zu T2meds Standard-Im-/
+  Export. Das umgeht das Überschreiben komplett. Vorgabe bleibt der feste Dateiname; nur umstellen,
+  wenn T2med entsprechend konfiguriert ist.
+- **GDT-Kennungen (Felder 8315/8316) sind jetzt zentral einstellbar** (Einstellungen → Praxis →
+  „GDT-Kennungen für T2med“) – für Rechnung, Storno und Mahnung gemeinsam. Vorgabe bleiben die
+  erprobten Werte `T2MEDIGEL`/`IGELT2MED`; ändern nur, wenn das T2med-Gerät andere IDs erwartet.
+- **GDT-Dateien werden atomar und serialisiert geschrieben**, damit T2med nie eine halb
+  geschriebene Datei liest. Holt T2med eine Datei nicht ab, weist ein Hinweis darauf hin, statt
+  sie stillschweigend zu überschreiben.
+- **Zeichensatz-Code 3** (GDT-Feld 9206) wird als **CP1252/„ANSI“** interpretiert (Windows-üblich)
+  – Sonderzeichen wie €, Anführungszeichen und Gedankenstrich gehen beim Lesen/Schreiben nicht
+  mehr verloren.
+
+### Bedienung & In-App-Hilfe
+- **Die In-App-Hilfe ist jetzt durchsuchbar.** Ein schwebendes Suchfeld (oben rechts, per
+  **Strg+F** oder Knopf) hebt alle Fundstellen hervor; mit **F3 / Shift+F3** (oder Enter /
+  Shift+Enter) springt man vor- und rückwärts von Treffer zu Treffer, mit **Esc** schließt es.
+- **Kritische Fehler hängen die Anwendung nicht mehr auf:** Statt im Hintergrund weiterzulaufen,
+  zeigt das Programm den Fehler an und beendet sich sauber – kein „Zombie"-Prozess mehr, der nur
+  über den Task-Manager zu beenden war.
+
 ## v1.7.0 – 2026-07-16
 
 ### IGeL-Faktura läuft jetzt auch unter Linux
