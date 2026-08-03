@@ -2,6 +2,74 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## v1.8.1 – 2026-08-03
+
+### Karteieinträge gehen nicht mehr verloren (GDT-Warteschlange)
+- **Mehrere Rückmeldungen auf einmal sind jetzt sicher.** T2med liest jede Rückmeldung unter
+  *einem* festen Dateinamen und löscht sie nach dem Einlesen. Bisher wurde höchstens 15 Sekunden
+  auf die Abholung gewartet und danach überschrieben (Rechnung/Storno) bzw. aufgegeben
+  (Zahlungserinnerungen) – dabei konnten Karteieinträge verloren gehen, besonders wenn **viele
+  Mahnungen gemeinsam** erstellt wurden.
+- Neu: Was gerade nicht zustellbar ist, wartet in einer **Warteschlange auf der Festplatte** und
+  wird **eines nach dem anderen** zugestellt, sobald T2med die vorige Datei abgeholt hat –
+  **zeitlich unbegrenzt** und auch über einen Programm-/Rechnerneustart hinweg. Es wird nie
+  überschrieben und nie verworfen. An T2med muss **nichts** umgestellt werden (die festen
+  Dateinamen bleiben, kein Sammel-/Musterimport nötig).
+- Wartet etwas, zeigt die Kopfzeile **„⏳ n an T2med"**. Bleibt die Zahl stehen, liest T2med den
+  Ordner nicht ein – die Einträge bleiben so lange sicher gespeichert.
+
+### Umlaute in Storno- und Mahnungs-Einträgen
+- **Sonderzeichen kommen in der Karteikarte wieder richtig an.** Storno- und Mahnungs-GDT wurden
+  fest als CP437 geschrieben; liest T2med ANSI/CP1252, wurde aus „Kürette" ein „K?rette". Beide
+  nutzen jetzt **denselben Zeichensatz wie die Rechnungs-Rückmeldung** – IGeL-Faktura übernimmt
+  ihn automatisch aus T2meds Eingangsdatei (GDT-Feld 9206); notfalls fest einstellbar.
+
+### Leistungsdatum immer konkret auf der Rechnung
+- Statt der relativen Angabe „Leistungszeitpunkt entspricht dem Rechnungsdatum" steht jetzt
+  **immer ein konkretes Datum** auf der Rechnung (§12 Abs. 2 GOÄ): bei einem einzigen Tag als
+  Zeile *„Leistungszeitpunkt: TT.MM.JJJJ"*, bei mehreren Tagen als **Spalte „Datum"** je Position.
+  Eine am 19.07. vorgemerkte und am 02.08. abgerechnete Sitzung weist damit den **19.07.** aus.
+
+### Vormerken und Abrechnen: klarer Ablauf, klare Wörter
+- **Drei Begriffe, überall gleich:** **Vormerken** (Leistung erfassen, aber nicht abrechnen) ·
+  **Vormerkungen** (die Liste des noch nicht Abgerechneten) · **Abrechnen** (daraus wird die
+  Rechnung). Die früheren Mischbegriffe („Sammelrechnung", „Laufende Behandlung", „Serie",
+  „Sitzung") sind aus der Bedienung verschwunden.
+- **Erfassen und Auswählen sind getrennt.** Beim Erfassen sieht man nur die heutigen Leistungen;
+  vorhandene Vormerkungen stehen als Hinweis daneben. Erst beim **Abrechnen** kommt die Seite
+  **„Was soll auf die Rechnung?"** – dort stehen alle vorgemerkten Leistungen **angehakt** zur
+  Auswahl.
+- **Was abgehakt wird, bleibt vorgemerkt** und kann später abgerechnet werden. Damit lassen sich
+  **zwei parallel laufende Behandlungen** desselben Patienten getrennt abrechnen, ohne etwas
+  löschen zu müssen. Auch „Vormerkungen" → „Abrechnen …" führt auf diese Auswahl.
+- **„Neue Rechnung"** zeigt jetzt ebenfalls an, wenn für den Patienten etwas vorgemerkt ist –
+  vorher konnte man dort ahnungslos eine Rechnung über nur die heutige Leistung erstellen.
+
+### Rückmeldung beim Erstellen – und keine doppelten Rechnungen mehr
+- **Sichtbare Rückmeldung:** Erstellen dauert spürbar (PDF, GDT, Drucker). Bisher passierte
+  sichtbar nichts. Jetzt werden die Knöpfe gesperrt, der gedrückte Knopf zeigt den laufenden
+  Vorgang („Rechnung wird erstellt und gedruckt …") und der Mauszeiger wartet.
+- **Doppelklick kann keine zweite Rechnung mehr erzeugen.** Jedes Formular trägt eine einmalige
+  Kennung; ein zweites Abschicken (Doppelklick, Zurück-Taste, Neu laden) wird serverseitig
+  erkannt und **nicht erneut gebucht**.
+
+### Express schließt sich wieder – auch im Einzelplatz
+- Im **Einzelplatz** blieb das Express-Fenster nach „Erstellen"/„Vormerken" stehen, obwohl der
+  Knopf das Schließen ankündigte: die Schließen-Logik gab es nur im Arbeitsplatz-Betrieb. Jetzt
+  schließt sich das von T2med aufgerufene Express-Fenster in **beiden** Betriebsarten.
+
+### Vormerken wird in der Akte quittiert
+- Beim **Vormerken** schreibt IGeL-Faktura einen Vermerk *„Vorgemerkt für Sammelrechnung (noch
+  nicht abgerechnet)"* mit den Leistungen in die Patientenakte. Damit erhält T2med die erwartete
+  Antwort auf seinen Aufruf (bisher meldete es beim nächsten Mal „Datei geschrieben, aber keine
+  Antwort"), und in der Akte ist dokumentiert, dass die Leistung erfasst ist – **niemand muss beim
+  Personal nachfragen**, ob ans Vormerken gedacht wurde. Danach schließt sich das von T2med
+  aufgerufene Fenster von selbst – Vormerken ist der Abschluss des Vorgangs.
+- Die Quittung läuft über den **gewöhnlichen Rückgabeweg** (dieselbe Datei wie die
+  Rechnungs-Rückmeldung) – in T2med ist **nichts zusätzlich einzurichten**. Beim Aufruf steht ja
+  noch nicht fest, ob der Nutzer abrechnet oder vormerkt; beide Antworten laufen über denselben
+  Kanal.
+
 ## v1.8.0 – 2026-07-28
 
 ### Sammelrechnung: Behandlungen über mehrere Termine vormerken (Stufe 2)
