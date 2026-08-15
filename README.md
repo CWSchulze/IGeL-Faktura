@@ -20,6 +20,10 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 
 ![Offene Vormerkungen](docs/vormerkungen.png)
 
+**Abrechnen mit Auswahl** – was angehakt ist, kommt auf die Rechnung; der Rest bleibt vorgemerkt.
+
+![Was soll auf die Rechnung?](docs/abrechnen.png)
+
 <details>
 <summary><b>Weitere Ansichten</b> – Leistungsmenü, Einstellungen, GOÄ-Katalog, Konto-Abgleich, Mehrplatz</summary>
 
@@ -32,6 +36,10 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 **Einstellungen**
 
 ![Einstellungen](docs/einstellungen.png)
+
+**Einrichtung dieses PCs** – die beiden T2med-Geräte (Rechnungen / Rückmeldungen), Drucken, Anzeige
+
+![Einstellungen – Dieser PC](docs/einstellungen-dieser-pc.png)
 
 **GOÄ-Katalog durchsuchen**
 
@@ -52,10 +60,10 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 - **T2med / GDT-Anbindung** – der Patient kommt automatisch per GDT; die PDF-Rechnung und die GDT-Rückgabe landen wieder bei T2med.
 - **Privat-/IGeL-Rechnungen als PDF** (DIN-5008-Layout), mit **GiroCode / EPC-QR-Code** zum bequemen Bezahlen.
 - **Gemischte MwSt** (steuerfreie und steuerpflichtige Leistungen) auf einer Rechnung – korrekt nach Steuersätzen aufgeschlüsselt (§14 UStG).
-- **Revisionssicher / GoBD** – gebuchte Rechnungen werden nicht geändert oder gelöscht (Storno statt Korrektur), fortlaufende eindeutige Nummern, lückenloses Protokoll. Ein **Storno** ist ausdruckbar (deutlich als ungültig gekennzeichnet) und wird als negativer **Karteieintrag an T2med** zurückgemeldet.
-- **Sammelrechnung für mehrterminige Behandlungen** – Sitzungen einer Impf- oder Plasma-/PRP-Serie am Behandlungstag mit einem Klick **vormerken** („Vormerken & schließen"; T2med erhält dabei den Vermerk *vorgemerkt* in die Akte) und bei der letzten Sitzung mit **einem** Knopf gemeinsam abrechnen – **eine** Rechnung mit je Sitzung eigenem **Leistungsdatum**. Eine Übersicht „Offene Vormerkungen" sorgt dafür, dass keine Serie vergessen wird.
+- **Revisionssicher / GoBD** – gebuchte Rechnungen werden nicht geändert oder gelöscht (Storno statt Korrektur), fortlaufende eindeutige Nummern, lückenloses Protokoll. Ein **Storno** ist ausdruckbar (deutlich als ungültig gekennzeichnet) und wird als negativer **Karteieintrag an T2med** zurückgemeldet. War die stornierte Rechnung schon **bezahlt**, führt das Programm den Betrag als **offene Erstattung** an den Patienten, bis die Auszahlung gebucht ist – auch in der Karteikarte.
+- **Vormerken statt abrechnen** – für zwei Alltagsfälle: (1) **mehrterminige Behandlungen**, die am Ende *eine* Rechnung ergeben, und (2) die **Arbeitsteilung zwischen Behandlungszimmer und Anmeldung** – wer behandelt hat, hakt die Leistungen an; die Zahlungsart (Karte oder Überweisung) entscheidet sich erst vorn, wo die MFA die Vormerkung sieht und abrechnet. Sitzungen einer Impf- oder Plasma-/PRP-Serie werden am Behandlungstag mit einem Klick **vorgemerkt** (erfassen, aber noch nicht abrechnen; T2med erhält dabei den Vermerk *vorgemerkt* in die Akte). Beim Abrechnen wird auf einer eigenen Seite gewählt, **was auf die Rechnung soll** – nicht Gewähltes bleibt vorgemerkt, sodass **zwei parallel laufende Behandlungen getrennt** abgerechnet werden können. Ergebnis: **eine** Rechnung mit je Sitzung eigenem **Leistungsdatum**.
 - **Karteieinträge gehen nicht verloren** – Rückmeldungen an T2med (Rechnung, Storno, Zahlungserinnerung) warten in einer **Warteschlange**, bis T2med die vorige Datei eingelesen hat: keine wird überschrieben oder verworfen, auch wenn viele auf einmal entstehen. Wartende Einträge sind in der Kopfzeile sichtbar.
-- **Zahlungserinnerungen** für überfällige Rechnungen (mit optionaler GDT-Datei für T2med).
+- **Zahlungserinnerungen** für überfällige Rechnungen – werden wie Rechnungen gedruckt und als Karteieintrag an T2med zurückgemeldet.
 - **Leistungsmenü** mit Kategorien, Drag-&-Drop-Sortierung und CSV-Import.
 - **GOÄ-Katalog** – das amtliche Gebührenverzeichnis durchsuchen und Positionen mit einstellbarem Steigerungsfaktor als eigene Leistungen übernehmen.
 - **Konto-Abgleich** – Kontoumsatz-CSV einlesen (deutsche **oder englische** Spaltenüberschriften), Zahlungseingänge automatisch zuordnen und sammelweise als bezahlt buchen. Farb-Ampel (🟢 über die Rechnungsnummer erkannt / 🟠 nur vermutet); eine Sammelüberweisung kann mehrere Rechnungen auf einmal begleichen.
@@ -75,8 +83,14 @@ IGeL-Faktura läuft auf **Windows und Linux** – Server und Arbeitsplätze dür
    - **Windows:** `IGeL-Faktura.exe`
    - **Linux:** `./IGeL-Faktura`
 3. In den **Einstellungen** Praxisdaten, IBAN/BIC, GDT-Ordner und Drucker eintragen.
-4. **T2med**: den Express-Aufruf auf das Programm mit dem Argument `--express` einrichten
-   (Windows z. B. `…\IGeL-Faktura.exe --express`).
+4. **T2med**: zwei GDT-Geräte anlegen –
+   **Gerät 1 „Rechnungen"** im Modus *Aufruf für jede einzelne Messung* mit dem Aufruf
+   `…\IGeL-Faktura.exe --express` (so kommt der Patient herein und die Rechnung zurück), und
+   **Gerät 2 „Rückmeldungen"** im Modus *Programm läuft eigenständig* auf einen dauerhaft
+   überwachten Ordner – dort landen Storno und Zahlungserinnerung, die ja **ohne** Aufruf aus
+   der Karteikarte entstehen (einzulesende Datei: `T2MDIGRM`). Die beiden Ordner trägt man im
+   Programm unter *Einstellungen → Dieser PC* ein; die In-App-Hilfe führt Schritt für Schritt
+   durch beide Geräte.
 
 **Unterstützte Systeme:** Windows 11 · Ubuntu 22.04 / 24.04 LTS.
 Die ausführliche Administrator-Anleitung (`README.txt`) liegt jedem Paket bei.

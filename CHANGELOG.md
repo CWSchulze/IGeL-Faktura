@@ -2,7 +2,110 @@
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
 
-## v1.8.1 – 2026-08-03
+## v1.8.1 – 2026-08-15
+
+### Aus dem Praxistest
+- **Vorgemerkte Leistungen: angezeigter Betrag je Zeile stimmt jetzt.** Bei einer Menge größer 1 stand in der Spalte „Betrag" der *Einzelpreis* – „drei weitere Naevi" erschienen mit 20,00 € statt 60,00 €. Abgerechnet wurde immer richtig, aber die Zeilen ergaben nicht die Summe darunter; genau daran prüft man vor dem Abrechnen. Zusätzlich steht die vorgemerkte Summe jetzt auch in der Kopfzeile von „Neue Rechnung" und im Express.
+- **Druck bleibt hängen: klare Meldung statt zwei Minuten Stillstand.** Wartet ein
+  Druckauftrag, bricht das Programm jetzt nach 45 statt 120 Sekunden ab (ein echter
+  Drucker antwortet in Sekunden) und schreibt dabei ins Protokoll, was in der
+  Warteschlange steht – ein steckengebliebener Auftrag blockiert nämlich alle folgenden.
+  Zusätzlich weist das Programm bei „Microsoft Print to PDF" (und XPS) darauf hin, dass
+  dieser „Drucker" jedes Mal ein Fenster mit der Frage nach dem Dateinamen öffnet: Mit
+  jemandem am Bildschirm funktioniert er, unbeaufsichtigt (Server, Express) nicht.
+- Der Druck arbeitet jetzt immer mit vollständigen Dateipfaden. Vorher hing es vom
+  Arbeitsverzeichnis ab, ob die PDF gefunden wurde.
+- **„Arbeitsplatz" ohne Server-Adresse ist keine Falle mehr.** Wer die Rolle umstellte, aber
+  keinen Server auswählte, bekam ein Programm, das sich *Arbeitsplatz* nannte und trotzdem auf
+  einer **eigenen, lokalen Datenbank** arbeitete – die Rechnungen kamen nie am Server an, und
+  niemand merkte es. Die Rolle lässt sich jetzt ohne Server-Adresse **nicht speichern**, und ein
+  Start in diesem Zustand wird mit klarer Erklärung angehalten.
+- **Kein aufblitzendes schwarzes Fenster mehr.** Beim Öffnen der Einstellungen am Server startete
+  kurz ein Konsolenfenster und die Seite hing 1–2 Sekunden – die Abfrage des Autostart-Zustands
+  rief ein Systemprogramm auf. Läuft jetzt unsichtbar und wird kurz gepuffert.
+- **Steuerungs-Tray und Server passen zusammen.** Wurde der Server über die Weboberfläche
+  beendet, blieb ein rotes Icon zurück, dessen Menüpunkte alle ins Leere führten. Das Menü
+  richtet sich jetzt nach dem Zustand: Läuft der Server, gibt es *Verwaltung öffnen* und
+  *Server beenden*; läuft er nicht, **Server starten**. Neu ist *Steuerung schließen* – vorher
+  ließ sich das Icon überhaupt nicht schließen.
+- Der Einstellungsdialog öffnet in sinnvoller Größe (er ging als schmaler Streifen auf) und
+  braucht keinen waagerechten Rollbalken mehr.
+- In den Einstellungen ist der Knopf **Speichern** gesperrt, solange nichts geändert wurde, und
+  auf reinen Anzeige-Seiten ganz ausgeblendet – die Frage „muss ich jetzt noch speichern?"
+  stellt sich nicht mehr.
+
+### Schwarzes Fenster: das Programm hilft sich selbst
+- Auf Rechnern, die **per Remote-Desktop** bedient werden oder als virtuelle Maschine laufen,
+  gibt es für den eingebauten Browser keine nutzbare Grafikbeschleunigung – das Fenster hatte
+  dann zwar einen Rahmen, blieb aber **schwarz**. Bisher stand in der Admin-Anleitung, man solle
+  eine Umgebungsvariable setzen; in einer Praxis ist das keine brauchbare Antwort.
+- Neu **erkennt das Programm eine Remote-Sitzung selbst** und schaltet die Grafikbeschleunigung
+  dort automatisch ab. Für alles, was sich nicht erkennen lässt (z. B. sehr alte Treiber), gibt
+  es den Schalter *Einstellungen → Dieser PC → Anzeige → Grafik*.
+- Zusätzlich bekommt jede Fensterart eine **eigene Browserkern-Ablage**, damit ein Express-Aufruf
+  aus T2med und ein offenes Hauptfenster sich nicht mehr in die Quere kommen.
+
+### Erstattung nach dem Storno einer bezahlten Rechnung
+- Wird eine **bereits bezahlte** Rechnung storniert (Bar/EC sind sofort bezahlt), liegt Geld in
+  der Kasse, dem kein gültiger Beleg mehr gegenübersteht – es gehört dem Patienten zurück.
+  Bisher war davon nirgends etwas zu sehen.
+- Der Storno-Beleg trägt jetzt den Hinweis **„Erstattung offen"** samt Betrag, bis die Auszahlung
+  mit **„Erstattet"** gebucht ist (protokolliert). Auch der **Karteieintrag in T2med** nennt den
+  zu erstattenden Betrag. Der Status bleibt „storno" – ein Gegenbeleg bleibt ein Gegenbeleg
+  (GoBD), die Umsatzsummen ändern sich nicht.
+
+### Einstellungen: nach dem gedacht, was T2med braucht
+- Der Dialog **„Einstellungen dieses PCs"** bildet jetzt den Grundgedanken der Einrichtung ab:
+  **T2med-Gerät 1 – Rechnungen** (Aufruf aus der Karteikarte) und **T2med-Gerät 2 –
+  Rückmeldungen** (dauerüberwacht, für Storno und Zahlungserinnerung) stehen als eigene,
+  erklärte Blöcke da; **Drucker und Anzahl der Ausdrucke** stehen zusammen.
+- Der Reiter hieß „Arbeitsplatz", enthielt aber die Einstellungen des jeweiligen PCs (auch am
+  Server). Er heißt jetzt **„Dieser PC"** – wie der Menüpunkt, und beide zeigen **dieselben**
+  Einstellungen. Warum es beides gibt, steht jetzt in der Hilfe: am Arbeitsplatz kommt die
+  Weboberfläche vom Server, die lokalen Werte müssen aber auch ohne Server erreichbar sein.
+- **Behoben:** Änderungen im nativen Dialog (z. B. Drucker) wirkten erst nach einem Neustart –
+  und wurden beim nächsten Speichern über die Weboberfläche sogar wieder überschrieben.
+- Der Karteieintrag zur **Zahlungserinnerung ist nicht mehr optional** (beim Storno war er es nie):
+  Ist ein Rückmelde-Ordner eingerichtet, entsteht er; ist keiner eingerichtet, sagt das Programm
+  das ausdrücklich, statt die Datei still bei den PDF-Kopien abzulegen.
+- **Zahlungserinnerungen werden jetzt gedruckt** – sie sind Briefe, die das Haus verlassen
+  müssen. „Automatisch drucken" gilt damit für **Rechnungen und Zahlungserinnerungen**;
+  Storno-Belege werden weiterhin nur auf Wunsch über **Drucken** ausgegeben (sonst käme für jede
+  Korrektur ungefragt Papier). Beides steht so auch am Schalter.
+- In der Navigationsleiste lässt sich der Text nicht mehr versehentlich markieren.
+
+### Zahlungserinnerungen und Storno kommen in T2med an
+- **Ein zweites GDT-Gerät, ein Dateiname.** Storno und Zahlungserinnerung entstehen ohne
+  T2med-Aufruf und brauchen darum ein eigenes, **dauerüberwachtes** Gerät. Bisher schrieben sie
+  unter festen Namen (`Mahnung.gdt`/`Storno.gdt`), die ein auf **nummerierte** Dateien
+  eingestelltes T2med schlicht nie ansieht – die Einträge kamen ohne Fehlermeldung nie an.
+- Neu einheitlich: **`T2MDIGRM`** – fest `T2MDIGRM.gdt`, nummeriert `T2MDIGRM.001…999`. Das
+  **Dateischema gilt jetzt für alles**: Rechnungen, Storno und Zahlungserinnerungen. Beide
+  Meldungsarten teilen sich das Gerät, ohne sich zu überschreiben.
+- Die In-App-Hilfe beschreibt die Einrichtung Schritt für Schritt (Modus, Ordner, Dateiname) –
+  einschließlich des Hinweises, T2meds Namensvorschlag zu **überschreiben**.
+
+### Automatisches Update funktioniert wieder
+- **Ursache gefunden:** Das Update benannte den gesamten Programmordner um (z. B. `C:\IGeL` →
+  `C:\IGeL_alt`). Das schreibt in den übergeordneten Ordner – im Laufwerksstamm darf ein
+  normaler Benutzer das nicht (`Zugriff verweigert`). Das Update schlug dadurch **immer** fehl:
+  Es lud herunter, entpackte und brach dann still ab.
+- Neu wird **innerhalb** des Programmordners ersetzt; der Ordner `daten` (Einstellungen,
+  Datenbank) wird dabei **gar nicht mehr bewegt**. Fehlen die Rechte dennoch, fragt das Programm
+  **einmalig** nach Administratorrechten.
+- Das **Update-Protokoll** liegt jetzt neben der Installation statt in einem temporären Ordner –
+  vorher war ein fehlgeschlagenes Update praktisch nicht nachvollziehbar.
+
+### Übersicht bleibt stehen
+- Die Übersicht sprang alle paar Sekunden zurück in „Neue Rechnung", solange ein Patient geladen
+  war – nach dem Abrechnen wurde er nie gelöscht. Jetzt wird nur **einmal je Patienten-Übergabe**
+  gewechselt, und nach dem Abrechnen ist kein Patient mehr geladen.
+
+### Express-Hilfe
+- Die Kurzhilfe im Express beantwortet jetzt auch: heute nur erfassen statt abrechnen, am letzten
+  Termin alles gemeinsam abrechnen, zwei Behandlungen parallel trennen, was der Wartehinweis
+  „⏳ … an T2med" bedeutet.
+
 
 ### Karteieinträge gehen nicht mehr verloren (GDT-Warteschlange)
 - **Mehrere Rückmeldungen auf einmal sind jetzt sicher.** T2med liest jede Rückmeldung unter
