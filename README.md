@@ -24,6 +24,10 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 
 ![Was soll auf die Rechnung?](docs/abrechnen.png)
 
+**Wen erinnern?** – vor dem Mahnlauf wird einzeln ausgewählt
+
+![Wen erinnern?](docs/mahnauswahl.png)
+
 <details>
 <summary><b>Weitere Ansichten</b> – Leistungsmenü, Einstellungen, GOÄ-Katalog, Konto-Abgleich, Mehrplatz</summary>
 
@@ -63,7 +67,7 @@ IGeL-Faktura erstellt Privat-/IGeL-Rechnungen aus den Patientendaten von **T2med
 - **Revisionssicher / GoBD** – gebuchte Rechnungen werden nicht geändert oder gelöscht (Storno statt Korrektur), fortlaufende eindeutige Nummern, lückenloses Protokoll. Ein **Storno** ist ausdruckbar (deutlich als ungültig gekennzeichnet) und wird als negativer **Karteieintrag an T2med** zurückgemeldet. War die stornierte Rechnung schon **bezahlt**, führt das Programm den Betrag als **offene Erstattung** an den Patienten, bis die Auszahlung gebucht ist – auch in der Karteikarte.
 - **Vormerken statt abrechnen** – für zwei Alltagsfälle: (1) **mehrterminige Behandlungen**, die am Ende *eine* Rechnung ergeben, und (2) die **Arbeitsteilung zwischen Behandlungszimmer und Anmeldung** – wer behandelt hat, hakt die Leistungen an; die Zahlungsart (Karte oder Überweisung) entscheidet sich erst vorn, wo die MFA die Vormerkung sieht und abrechnet. Sitzungen einer Impf- oder Plasma-/PRP-Serie werden am Behandlungstag mit einem Klick **vorgemerkt** (erfassen, aber noch nicht abrechnen; T2med erhält dabei den Vermerk *vorgemerkt* in die Akte). Beim Abrechnen wird auf einer eigenen Seite gewählt, **was auf die Rechnung soll** – nicht Gewähltes bleibt vorgemerkt, sodass **zwei parallel laufende Behandlungen getrennt** abgerechnet werden können. Ergebnis: **eine** Rechnung mit je Sitzung eigenem **Leistungsdatum**.
 - **Karteieinträge gehen nicht verloren** – Rückmeldungen an T2med (Rechnung, Storno, Zahlungserinnerung) warten in einer **Warteschlange**, bis T2med die vorige Datei eingelesen hat: keine wird überschrieben oder verworfen, auch wenn viele auf einmal entstehen. Wartende Einträge sind in der Kopfzeile sichtbar.
-- **Zahlungserinnerungen** für überfällige Rechnungen – werden wie Rechnungen gedruckt und als Karteieintrag an T2med zurückgemeldet.
+- **Zahlungserinnerungen** für überfällige Rechnungen – mit **Auswahl, wer erinnert wird** (vorausgewählt sind die noch nicht Gemahnten; ein Mahnlauf lässt sich nicht zurücknehmen). Sie werden wie Rechnungen gedruckt und als Karteieintrag an T2med zurückgemeldet.
 - **Leistungsmenü** mit Kategorien, Drag-&-Drop-Sortierung und CSV-Import.
 - **GOÄ-Katalog** – das amtliche Gebührenverzeichnis durchsuchen und Positionen mit einstellbarem Steigerungsfaktor als eigene Leistungen übernehmen.
 - **Konto-Abgleich** – Kontoumsatz-CSV einlesen (deutsche **oder englische** Spaltenüberschriften), Zahlungseingänge automatisch zuordnen und sammelweise als bezahlt buchen. Farb-Ampel (🟢 über die Rechnungsnummer erkannt / 🟠 nur vermutet); eine Sammelüberweisung kann mehrere Rechnungen auf einmal begleichen.

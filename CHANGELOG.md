@@ -1,3 +1,43 @@
+## v1.8.2 – 2026-08-17
+
+### Übersicht springt nicht mehr grundlos weg
+- **Ursache gefunden:** Der Zähler für „ein Patient wurde übergeben" war **prozessweit**, die
+  Patienten selbst aber **je Arbeitsplatz**. Am Server erhöhte damit jeder T2med-Aufruf an
+  *irgendeinem* Platz die Zahl – und alle **anderen** Arbeitsplätze sprangen aus ihrer Übersicht
+  in „Neue Rechnung", obwohl bei ihnen nichts passiert war. Das erklärt, warum es selten und
+  scheinbar grundlos auftrat: Es hing davon ab, was gerade ein Kollege tat. Der Zähler gehört
+  jetzt zur Sitzung.
+- Zusätzlich abgesichert: Fehlt die Zählnummer (z. B. Arbeitsplatz neuer als der Server), bleibt
+  die Übersicht **stehen**. Vorher war es umgekehrt – dann sprang sie alle 2,5 Sekunden erneut.
+
+### Zahlungserinnerungen: erst auswählen, dann mahnen
+- **„Überfällige mahnen …" führt jetzt auf eine Auswahlseite.** Bisher traf ein Klick *alle*
+  überfälligen Rechnungen – auch Testpatienten und Leute, die gestern schon eine Erinnerung
+  bekommen hatten. Ein Mahnlauf lässt sich aber nicht zurücknehmen: Der Brief ist gedruckt, der
+  Karteieintrag geschrieben.
+- Auf der Seite steht je Rechnung, seit wann sie fällig ist und wann zuletzt gemahnt wurde.
+  **Vorausgewählt sind die noch nicht gemahnten**; Schaltflächen für *nur noch nicht gemahnte* /
+  *alle* / *keine*. Eine zweite Erinnerung hakt man bewusst dazu.
+
+### Vormerken und Abrechnen
+- **Die Zahlungsart wird nicht mehr zu früh gefragt.** Liegen Vormerkungen vor, führt
+  „Abrechnen …" zur Auswahl – dort entsteht die Rechnung, dort wird die Zahlungsart gewählt.
+  Vorher verlangte schon der erste Schritt eine Angabe und vergaß sie danach wieder.
+  Hintergrund: Die Zahlungsart gehört der *Rechnung*, nicht der einzelnen Leistung – im
+  Behandlungszimmer steht sie noch gar nicht fest.
+- **Die Summe rechnet beim Ab- und Anwählen mit.** Vorher blieb der Gesamtbetrag aller
+  Vormerkungen stehen, auch wenn man Zeilen abgewählt hatte (abgerechnet wurde immer richtig).
+  Jetzt steht dort z. B. *Gesamt (2 von 3)* mit dem passenden Betrag.
+
+### Status auf einen Blick
+- **Grün heißt jetzt nur noch „erledigt".** *offen* war ebenfalls grün und sah damit aus wie
+  bezahlt; es ist neutral-blau, *fällig* und *gemahnt* bleiben warnend, *storniert* neutral-grau.
+- **Zustand und Eigenschaft getrennt:** Eine Rechnung ist offen/bezahlt/storniert – *fällig* und
+  *gemahnt* sind Eigenschaften einer offenen Rechnung und stehen jetzt **neben** dem Zustand
+  statt an seiner Stelle.
+- Der Statusfilter kennt zusätzlich *fällig*, *fällig & noch nicht gemahnt* und *gemahnt*,
+  eingerückt unter *offen* – sie sind Teilmengen davon.
+
 # Änderungshistorie
 
 Alle nennenswerten Änderungen an IGeL-Faktura. Versionierung nach [SemVer](https://semver.org/lang/de/).
